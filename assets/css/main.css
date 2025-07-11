@@ -1,0 +1,186 @@
+:root {
+  --kubee-bg-header: #444d56;      /* Cinza escuro */
+  --kubee-text: #fff;              /* Branco */
+  --kubee-link: #fff;              /* Branco */
+  --kubee-link-hover: #18c0a6;     /* Verde principal */
+  --kubee-active: #18c0a6;         /* Verde principal */
+  --kubee-btn: #4a4dff;            /* Verde principal */
+  --kubee-btn-hover: #494cca;      /* Verde escuro */
+  --kubee-body-bg: #fff;           /* Branco */
+  --kubee-body-text: #23272f;      /* Cinza bem escuro */
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilo padrão do body */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--kubee-body-bg);
+  color: var(--kubee-body-text);
+  line-height: 1.6;
+}
+
+/* Header estilizado */
+header.bg-dark {
+  background: var(--kubee-bg-header) !important;
+}
+
+/* Links */
+a {
+  color: var(--kubee-link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Deixa o link do menu ativo com linha azul */
+.nav .current-menu-item > a {
+  color: var(--kubee-link);
+  border-bottom: 2px solid var(--kubee-active);
+  padding-bottom: 2px;
+  background: none;
+}
+
+/* Espaço entre os itens (caso não use gap-4) */
+.nav li {
+  margin-right: 24px;
+}
+
+.nav li:last-child {
+  margin-right: 0;
+}
+
+/* Links do menu */
+.nav a {
+  color: var(--kubee-link);
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.2s;
+  background: none;
+  padding: 6px 2px;
+}
+
+.nav a:hover {
+  color: var(--kubee-link-hover);
+  text-decoration: none;
+}
+
+/* Botão WhatsApp */
+.btn-primary {
+  background: var(--kubee-btn) !important;
+  border-color: var(--kubee-btn) !important;
+  color: #fff;
+  font-weight: 600;
+  padding: 8px 22px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: var(--kubee-btn-hover) !important;
+  border-color: var(--kubee-btn-hover) !important;
+  color: #fff;
+}
+
+/*--------------------------------------banner estilo ------------------------ */
+.banner-home {
+  min-height: 70vh;
+  padding: 64px 0 32px 0;
+  position: relative;
+  background: linear-gradient(105deg, #18c0a6 0%, #23272f 100%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.banner-home .container {
+  z-index: 2;
+  position: relative;
+}
+
+.banner-home .banner-content {
+  color: #fff;
+  max-width: 600px;
+}
+
+.banner-home .banner-subtitle {
+  color: #bff1e6;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.banner-home .banner-title {
+  font-size: 2.7rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  line-height: 1.05;
+  color: #fff;
+  letter-spacing: -1px;
+}
+
+.banner-home .banner-desc {
+  font-size: 1.22rem;
+  color: #e3fcf6;
+  margin-bottom: 2rem;
+}
+
+
+
+
+.banner-home .banner-images {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 40px;
+}
+
+.banner-home .banner-img {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(24,192,166,0.13);
+  padding: 0;
+  max-width: 350px;
+  width: 100%;
+  min-width: 220px;
+  height: 310px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.banner-home .banner-img img {
+  width: 95%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 18px;
+  display: block;
+}
+@media (max-width: 991px) {
+  .banner-home {
+    flex-direction: column;
+    padding-top: 32px;
+    padding-bottom: 20px;
+  }
+  .banner-home .banner-content {
+    margin-bottom: 32px;
+    text-align: center;
+  }
+  .banner-home .banner-images {
+    justify-content: center;
+    gap: 18px;
+  }
+  .banner-home .banner-title { font-size: 2rem; }
+  .banner-home .banner-img {
+    height: 180px;
+    max-width: 170px;
+  }
+}
