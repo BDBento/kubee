@@ -23,7 +23,7 @@ function kubee_register_post_type_negocios() {
         'has_archive'        => true,
         'rewrite'            => array('slug' => 'negocios'),
         'supports'           => array('title', 'editor', 'thumbnail'),
-        'menu_icon'          => 'dashicons-briefcase', // ícone de negócios
+        'menu_icon' => 'dashicons-cart',
         'show_in_rest'       => true,
         'hierarchical'       => false
     );

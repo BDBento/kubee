@@ -79,14 +79,33 @@ if (empty($banner_imgs)) {
 </section>
 
 
-
-<section class="clientes-home">
+<section class="clientes-lista-home py-5">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center mb-5">
+        <div class="col-lg-12 text-center mb-5">
                 <h2 class="fw-bold mb-3">Nossos Clientes</h2>
-                <p class="mb-4">Veja como a Kubee tem ajudado empresas a crescerem com soluções inteligentes.</p>
+                <p class="mb-4">Conheça alguns dos nossos clientes.</p>
             </div>
+        <div class="row g-4">
+            <?php
+            $clientes_query = new WP_Query([
+                'post_type' => 'clientes',
+                'posts_per_page' => 12
+            ]);
+            if ($clientes_query->have_posts()):
+                while ($clientes_query->have_posts()): $clientes_query->the_post(); ?>
+                    <div class="col-6 col-md-3 mb-3">
+                        <div class="card border-0 shadow-sm text-center py-3 px-2 h-100">
+                            <?php if (has_post_thumbnail()): ?>
+                                <img src="<?php the_post_thumbnail_url('medium'); ?>" alt="<?php the_title(); ?>" style="max-width: 110px; max-height: 80px; margin:0 auto 12px auto;">
+                            <?php endif; ?>
+                            <div style="font-weight: 600; font-size: 1.02rem;"><?php the_title(); ?></div>
+                        </div>
+                    </div>
+                <?php endwhile;
+                wp_reset_postdata();
+            else: ?>
+                <div class="col-12 text-center">Nenhum cliente cadastrado.</div>
+            <?php endif; ?>
         </div>
     </div>
 </section>
