@@ -13,7 +13,6 @@
     <!-- Logo -->
     <a href="<?php echo esc_url(home_url('/')); ?>" class="navbar-brand d-flex align-items-center">
       <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.svg" alt="Kubee Logo" style="height: 40px;">
-      <span class="ms-2 fw-bold">indexis</span>
     </a>
 
     <!-- Menu (padrão WP) -->

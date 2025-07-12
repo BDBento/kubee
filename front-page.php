@@ -2,7 +2,7 @@
 get_header();
 
 // Pegando os campos do Customizer
-$banner_title    = get_theme_mod('kubee_banner_title', 'atendimentos e vendas para equipes de alta performance');
+$banner_title    = get_theme_mod('kubee_banner_title', 'Atendimento Centralizado e Eficiente');
 $banner_subtitle = get_theme_mod('kubee_banner_subtitle', 'Plataforma que unifica');
 $banner_desc     = get_theme_mod('kubee_banner_desc', 'com inteligência artificial e chatbots');
 $whatsapp        = get_theme_mod('kubee_whatsapp_number', '5599999999999');
@@ -40,6 +40,57 @@ if (empty($banner_imgs)) {
     <div class="banner-overlay"></div>
 </section>
 
+<section class="negocios-lista-home py-5" style="background-color:#F9F9F9;">
+    
+    <div class="container" style="padding: 60px 0;">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="fw-bold mb-3">Aqui estão os Negócios que crescem com a Kubee</h2>
+
+            </div>
+            <?php
+            $negocios_query = new WP_Query([
+                'post_type' => 'negocios',
+                'posts_per_page' => 6
+            ]);
+            if ($negocios_query->have_posts()):
+                while ($negocios_query->have_posts()): $negocios_query->the_post();
+                    $icon_url = get_post_meta(get_the_ID(), '_negocio_icon_url', true);
+                    $resumo = get_post_meta(get_the_ID(), '_negocio_resumo', true);
+                    ?>
+                    <div class="col-md-4">
+                        <div class="card negocio-card h-100 shadow-sm border-0">
+                            <div class="card-body d-flex flex-column align-items-start" style="min-height:200px;">
+                                <?php if ($icon_url): ?>
+                                    <img src="<?php echo esc_url($icon_url); ?>" alt="" style="width:38px; height:38px; margin-bottom:15px;">
+                                <?php endif; ?>
+                                <h3 class="h6 fw-bold mb-2"><?php the_title(); ?></h3>
+                                <p class="mb-0"><?php echo esc_html($resumo); ?></p>
+                            </div>
+                        </div>
+                    </div>
+                <?php endwhile;
+                wp_reset_postdata();
+            else: ?>
+                <div class="col-12 text-center">Nenhum negócio encontrado.</div>
+            <?php endif; ?>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="clientes-home">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="fw-bold mb-3">Nossos Clientes</h2>
+                <p class="mb-4">Veja como a Kubee tem ajudado empresas a crescerem com soluções inteligentes.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const images = <?php echo json_encode($banner_imgs); ?>;
@@ -53,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 bannerImg.src = images[index];
                 bannerImg.style.opacity = 1;
             }, 600);
-        }, 8000);
+        }, 5000);
     }
 });
 </script>

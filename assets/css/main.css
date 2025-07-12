@@ -133,9 +133,6 @@ a:hover {
   margin-bottom: 2rem;
 }
 
-
-
-
 .banner-home .banner-images {
   display: flex;
   align-items: center;
@@ -183,4 +180,29 @@ a:hover {
     height: 180px;
     max-width: 170px;
   }
+}
+
+/*---------------------------------------estilo cards negocio ------------------------ */
+.negocio-card {
+  background: #ffffff;
+  border-radius: 16px;
+  transition: box-shadow .15s;
+  min-height: 180px;
+  box-shadow: 0 4px 16px rgba(30, 40, 80, 0.884);
+}
+.negocio-card:hover {
+  background-color: #35B39B;
+  box-shadow: 0 8px 32px rgba(24,192,166,.14);
+}
+.negocio-card h3 {
+  color: #23272f;
+  font-weight: 700;
+}
+.negocio-card p {
+  color: #444d56;
+  font-size: 1rem;
+}
+.negocio-card img {
+  display: block;
+  margin-bottom: 10px;
 }

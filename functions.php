@@ -79,3 +79,5 @@ add_action('customize_register', 'kubee_customize_register');
 
 // Função para carregar os campos do Customizer do banner
 require get_template_directory() . '/assets/functions-customiser/function-banner.php';
+// Função para registrar o post type "Serviços"
+require get_template_directory() . '/assets/post-type/negocios.php';
