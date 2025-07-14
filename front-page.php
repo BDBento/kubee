@@ -45,8 +45,8 @@ if (empty($banner_imgs)) {
     <div class="container" style="padding: 60px 0;">
         <div class="row">
             <div class="col-lg-12 text-center mb-5">
-                <h2 class="fw-bold mb-3">Aqui estão os Negócios que crescem com a Kubee</h2>
-
+                <h2 class="fw-bold mb-3 negocios-lista-home-titulo">Explore <span>nossos serviços</span></h2>
+                <p class="mb-4">Tudo o que sua equipe precisa para otimizar processos e atender melhor.</br>Todas as ferramentas em um só lugar pelo custo de uma. Veja:</p>
             </div>
             <?php
             $negocios_query = new WP_Query([
