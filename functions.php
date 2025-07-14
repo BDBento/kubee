@@ -49,6 +49,8 @@ add_action( 'after_setup_theme', 'kubee_elementor_support' );
 function kubee_register_menus() {
     register_nav_menus([
         'main_menu' => 'Menu Principal',
+        'footer_menu_1' => 'Menu Rodapé 1',
+        'footer_menu_2' => 'Menu Rodapé 2'
     ]);
 }
 add_action('after_setup_theme', 'kubee_register_menus');
