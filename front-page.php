@@ -23,8 +23,8 @@ if (empty($banner_imgs)) {
     <div class="container position-relative" style="z-index:2;">
         <div class="row align-items-center">
             <div class="col-lg-6 text-white">
-                <p class="mb-1 banner-subtitle"><?php echo esc_html($banner_subtitle); ?></p>
                 <h1 class="fw-bold mb-3 banner-title"><?php echo esc_html($banner_title); ?></h1>
+                <p class="mb-1 banner-subtitle"><?php echo esc_html($banner_subtitle); ?></p>
                 <p class="mb-4 banner-desc"><?php echo esc_html($banner_desc); ?></p>
                 <a href="https://wa.me/<?php echo esc_attr($whatsapp); ?>" target="_blank" class="btn btn-primary btn-lg d-inline-flex align-items-center gap-2" style="border-radius:12px;">
                     <i class="bi bi-whatsapp"></i> COMECE AGORA

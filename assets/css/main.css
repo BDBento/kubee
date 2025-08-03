@@ -4,8 +4,8 @@
   --kubee-link: #000000;              /* Branco */
   --kubee-link-hover: #18c0a6;     /* Verde principal */
   --kubee-active: #18c0a6;         /* Verde principal */
-  --kubee-btn: #4a4dff;            /* Verde principal */
-  --kubee-btn-hover: #494cca;      /* Verde escuro */
+  --kubee-btn: #1DB18A;            /* Verde principal */
+  --kubee-btn-hover: #1a9675;      /* Verde escuro */
   --kubee-body-bg: #fff;           /* Branco */
   --kubee-body-text: #23272f;      /* Cinza bem escuro */
 }
@@ -15,6 +15,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: poppins, sans-serif;
 }
 
 /* Estilo padrão do body */
@@ -111,13 +112,6 @@ a:hover {
   max-width: 600px;
 }
 
-.banner-home .banner-subtitle {
-  color: #283038d0;
-  font-weight: 600;
-  font-size: 1.1rem;
-  margin-bottom: 0.3rem;
-}
-
 .banner-home .banner-title {
   font-size: 2.7rem;
   font-weight: 900;
@@ -127,9 +121,18 @@ a:hover {
   letter-spacing: -1px;
 }
 
+.banner-home .banner-subtitle {
+  font-family: poppins, sans-serif;
+  color: #565859;
+  font-weight: 500;
+  font-size: 15px;
+  margin-bottom: 0.3rem;
+}
+
 .banner-home .banner-desc {
-  font-size: 1.22rem;
-  color: #e3fcf6;
+  font-family: poppins, sans-serif;
+  font-size: 0.8rem;
+  color: #565859;
   margin-bottom: 2rem;
 }
 
@@ -207,9 +210,8 @@ a:hover {
   margin-bottom: 10px;
 }
 .negocios-lista-home-titulo{
-    font-family: poppins, sans-serif;
-    font-weight: 700;
-    font-size: 2.5rem;
+    font-weight: 600;
+    font-size: 2.2rem;
     color: #23272f;
     margin-bottom: 1rem;
     text-align: center;
