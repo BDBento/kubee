@@ -1,7 +1,7 @@
 :root {
-  --kubee-bg-header: #444d56;      /* Cinza escuro */
+  --kubee-bg-header: #ffffff;      /* Cinza escuro */
   --kubee-text: #fff;              /* Branco */
-  --kubee-link: #fff;              /* Branco */
+  --kubee-link: #000000;              /* Branco */
   --kubee-link-hover: #18c0a6;     /* Verde principal */
   --kubee-active: #18c0a6;         /* Verde principal */
   --kubee-btn: #4a4dff;            /* Verde principal */
@@ -95,7 +95,7 @@ a:hover {
   min-height: 70vh;
   padding: 64px 0 32px 0;
   position: relative;
-  background: linear-gradient(105deg, #18c0a6 0%, #23272f 100%);
+  background: linear-gradient(90deg,#c2fcfa, #ffffff,#c2fcfa);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -107,12 +107,12 @@ a:hover {
 }
 
 .banner-home .banner-content {
-  color: #fff;
+  color: #0000;
   max-width: 600px;
 }
 
 .banner-home .banner-subtitle {
-  color: #bff1e6;
+  color: #283038d0;
   font-weight: 600;
   font-size: 1.1rem;
   margin-bottom: 0.3rem;
@@ -123,7 +123,7 @@ a:hover {
   font-weight: 900;
   margin-bottom: 1rem;
   line-height: 1.05;
-  color: #fff;
+  color: #283038;
   letter-spacing: -1px;
 }
 

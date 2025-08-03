@@ -12,7 +12,7 @@
     
     <!-- Logo -->
     <a href="<?php echo esc_url(home_url('/')); ?>" class="navbar-brand d-flex align-items-center">
-      <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-top.png" alt="Kubee Logo" style="height: 40px;">
+      <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-top.png" alt="Kubee Logo" style="height: 24px;width: 189;">
     </a>
 
     <!-- Menu (padrão WP) -->
