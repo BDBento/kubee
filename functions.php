@@ -79,7 +79,36 @@ function kubee_customize_register( $wp_customize ) {
 }
 add_action('customize_register', 'kubee_customize_register');
 
+
+function kubee_clientes_admin_enqueue( $hook ) {
+    global $typenow;
+    if ( $typenow !== 'clientes' ) {
+        return;
+    }
+
+    wp_enqueue_media();
+
+    wp_enqueue_script(
+        'kubee-clientes-media',
+        get_template_directory_uri() . '/assets/js/clientes-media.js',
+        array( 'jquery' ),
+        '1.0',
+        true
+    );
+}
+add_action( 'admin_enqueue_scripts', 'kubee_clientes_admin_enqueue' );
+
+
+
+
+
+
+
+
 // Função para carregar os campos do Customizer do banner
 require get_template_directory() . '/assets/functions-customiser/function-banner.php';
 // Função para registrar o post type "Serviços"
 require get_template_directory() . '/assets/post-type/negocios.php';
+
+// Função para registrar o post type "Nossos Clientes"
+require get_template_directory() . '/assets/post-type/nossos-clientes.php';

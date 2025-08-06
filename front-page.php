@@ -1,149 +1,116 @@
+<?php get_header(); ?>
+
 <?php
-get_header();
-
-// Pegando os campos do Customizer
-$banner_title = get_theme_mod('kubee_banner_title', 'Atendimento Centralizado e Eficiente');
+$banner_title    = get_theme_mod('kubee_banner_title', 'Atendimento Centralizado e Eficiente');
 $banner_subtitle = get_theme_mod('kubee_banner_subtitle', 'Plataforma que unifica');
-$banner_desc = get_theme_mod('kubee_banner_desc', 'com inteligência artificial e chatbots');
-$whatsapp = get_theme_mod('kubee_whatsapp_number', '5599999999999');
+$banner_desc     = get_theme_mod('kubee_banner_desc', 'com inteligência artificial e chatbots');
+$whatsapp        = get_theme_mod('kubee_whatsapp_number', '5599999999999');
 
-// Imagens do banner (array)
 $banner_imgs = [];
 for ($i = 1; $i <= 3; $i++) {
     $img = get_theme_mod("kubee_banner_img_$i");
-    if ($img)
-        $banner_imgs[] = esc_url($img);
+    if ($img) $banner_imgs[] = esc_url($img);
 }
-// Fallback caso não tenha imagens no customizer
 if (empty($banner_imgs)) {
     $banner_imgs = [get_template_directory_uri() . '/assets/img/banner-default.png'];
 }
 ?>
 
-<section class="banner-home d-flex align-items-center">
-    <div class="container position-relative" style="z-index:2;">
+<section class="banner-home">
+    <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-6 text-white">
-                <h1 class="fw-bold mb-3 banner-title"><?php echo esc_html($banner_title); ?></h1>
-                <p class="mb-1 banner-subtitle"><?php echo esc_html($banner_subtitle); ?></p>
-                <p class="mb-4 banner-desc"><?php echo esc_html($banner_desc); ?></p>
-                <a href="https://wa.me/<?php echo esc_attr($whatsapp); ?>" target="_blank"
-                    class="btn btn-primary btn-lg d-inline-flex align-items-center gap-2" style="border-radius:12px;">
+            <div class="col-lg-6 banner-content">
+                <h1 class="banner-title"><?php echo esc_html($banner_title); ?></h1>
+                <p class="banner-subtitle"><?php echo esc_html($banner_subtitle); ?></p>
+                <p class="banner-desc"><?php echo esc_html($banner_desc); ?></p>
+                <a href="https://wa.me/<?php echo esc_attr($whatsapp); ?>" class="btn btn-primary">
                     <i class="bi bi-whatsapp"></i> COMECE AGORA
                 </a>
             </div>
-            <div class="col-lg-6 d-flex justify-content-center">
-                <div id="banner-home-img" class="img-wrapper" style="max-width:480px;">
-                    <img src="<?php echo esc_url($banner_imgs[0]); ?>" alt="Banner" class="img-fluid rounded-4 shadow"
-                        style="transition:opacity .8s;min-height:320px;background:#fff;">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="banner-overlay"></div>
-</section>
-
-<section class="negocios-lista-home py-5" style="background-color:#F9F9F9;">
-
-    <div class="container" style="padding: 60px 0;">
-        <div class="row">
-            <div class="col-lg-12 text-center mb-5">
-                <h2 class="fw-bold mb-3 negocios-lista-home-titulo">Explore <span>nossos serviços</span></h2>
-                <p class="mb-4 negocios-lista-home-txt">Tudo o que sua equipe precisa para otimizar processos e atender
-                    melhor.</br>Todas as ferramentas em um só lugar pelo custo de uma. Veja:</p>
-            </div>
-            <?php
-            $negocios_query = new WP_Query([
-                'post_type' => 'negocios',
-                'posts_per_page' => 6
-            ]);
-            if ($negocios_query->have_posts()):
-                while ($negocios_query->have_posts()):
-                    $negocios_query->the_post();
-                    $icon_url = get_post_meta(get_the_ID(), '_negocio_icon_url', true);
-                    $resumo = get_post_meta(get_the_ID(), '_negocio_resumo', true);
-                    $subtitulo = get_post_meta(get_the_ID(), '_negocio_subtitulo', true);
-                    ?>
-                    <div class="col-md-4">
-                        <div class="card negocio-card h-100 shadow-sm border-0">
-                            <div class="card-body d-flex flex-column align-items-start" style="min-height:200px;">
-                                <div class="negocio-card-content row">
-                                    <div class="col-3 d-flex align-items-center justify-content-center">
-                                        <?php if ($icon_url): ?>
-                                            <img src="<?php echo esc_url($icon_url); ?>" alt=""
-                                                style="width:38px; height:38px; margin-bottom:15px;">
-                                        <?php endif; ?>
-                                    </div>
-                                    <div class="col-9 negocio-card-content-text">
-                                        <h3 class="h6 fw-bold"><?php the_title(); ?></h3>
-                                        <p class="mb-0"><?php echo esc_html($subtitulo); ?></p>
-                                    </div>
-                                </div>
-                                <div class="negocio-card-desc mt-auto" style="flex-grow: 1; width: 100%;">
-                                    <p class="mb-0"><?php echo esc_html($resumo); ?></p>
-                                </div>
-                            </div>
-                        </div>
+            <div class="col-lg-6 banner-images">
+                <?php foreach ($banner_imgs as $img): ?>
+                    <div class="banner-img">
+                        <img src="<?php echo esc_url($img); ?>" alt="">
                     </div>
-                <?php endwhile;
-                wp_reset_postdata();
-            else: ?>
-                <div class="col-12 text-center">Nenhum negócio encontrado.</div>
-            <?php endif; ?>
+                <?php endforeach; ?>
+            </div>
         </div>
     </div>
 </section>
 
-
-<section class="clientes-lista-home py-5">
+<section class="negocios-lista-home">
     <div class="container">
-        <div class="col-lg-12 text-center mb-5">
-            <h2 class="fw-bold mb-3">Nossos Clientes</h2>
-            <p class="mb-4">Conheça alguns dos nossos clientes.</p>
+        <div class="text-center mb-5">
+            <h2 class="section-title">Explore <span>nossos serviços</span></h2>
+            <p class="section-desc">Tudo o que sua equipe precisa para otimizar processos e atender melhor.</p>
         </div>
         <div class="row g-4">
             <?php
-            $clientes_query = new WP_Query([
-                'post_type' => 'clientes',
-                'posts_per_page' => 12
-            ]);
-            if ($clientes_query->have_posts()):
-                while ($clientes_query->have_posts()):
-                    $clientes_query->the_post(); ?>
-                    <div class="col-6 col-md-3 mb-3">
-                        <div class="card border-0 shadow-sm text-center py-3 px-2 h-100">
-                            <?php if (has_post_thumbnail()): ?>
-                                <img src="<?php the_post_thumbnail_url('medium'); ?>" alt="<?php the_title(); ?>"
-                                    style="max-width: 110px; max-height: 80px; margin:0 auto 12px auto;">
-                            <?php endif; ?>
-                            <div style="font-weight: 600; font-size: 1.02rem;"><?php the_title(); ?></div>
+            $q = new WP_Query(['post_type' => 'negocios', 'posts_per_page' => 6]);
+            if ($q->have_posts()):
+                while ($q->have_posts()): $q->the_post();
+                    $icon = get_post_meta(get_the_ID(), '_negocio_icon_url', true);
+                    $subt = get_post_meta(get_the_ID(), '_negocio_subtitulo', true);
+                    $res  = get_post_meta(get_the_ID(), '_negocio_resumo', true);
+            ?>
+                    <div class="col-md-4">
+                        <div class="negocio-card">
+                            <div class="negocio-header d-flex align-items-center">
+                                <div class="negocio-icon">
+                                    <?php if ($icon): ?><img src="<?php echo esc_url($icon); ?>" alt="" class="negocio-icon"><?php endif; ?>
+                                </div>
+                                <div class="negocio-title">
+                                    <h3><?php the_title(); ?></h3>
+                                </div>
+                            </div>
+                            <?php if ($subt): ?><h4><?php echo esc_html($subt); ?></h4><?php endif; ?>
+                            <p><?php echo esc_html($res); ?></p>
+
                         </div>
                     </div>
-                <?php endwhile;
+            <?php endwhile;
                 wp_reset_postdata();
-            else: ?>
-                <div class="col-12 text-center">Nenhum cliente cadastrado.</div>
-            <?php endif; ?>
+            endif; ?>
         </div>
     </div>
 </section>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const images = <?php echo json_encode($banner_imgs); ?>;
-        let index = 0;
-        const bannerImg = document.querySelector('#banner-home-img img');
-        if (images.length > 1 && bannerImg) {
-            setInterval(function () {
-                index = (index + 1) % images.length;
-                bannerImg.style.opacity = 0;
-                setTimeout(function () {
-                    bannerImg.src = images[index];
-                    bannerImg.style.opacity = 1;
-                }, 600);
-            }, 5000);
-        }
-    });
-</script>
+
+<section class="clientes-lista-home">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">Conheça alguns de <span>nossos clientes.</span></h2>
+        </div>
+        <div class="row g-4 justify-content-center">
+            <?php
+            $qp = new WP_Query(['post_type' => 'clientes', 'posts_per_page' => 12]);
+            if ($qp->have_posts()):
+                while ($qp->have_posts()): $qp->the_post();
+                    $media = get_post_meta(get_the_ID(), '_cliente_media_id', true);
+                    $link = get_post_meta(get_the_ID(), '_cliente_link', true);
+                    $img = $media ? wp_get_attachment_image_url($media, 'medium') : '';
+            ?>
+                    <div class="col-6 col-md-3">
+                        <div class="cliente-card">
+                            <?php if ($img): ?>
+                                <?php if ($link): ?>
+                                    <a href="<?php echo esc_url($link); ?>" target="_blank">
+                                        <img src="<?php echo esc_url($img); ?>" alt="<?php the_title(); ?>">
+                                    </a>
+                                <?php else: ?>
+                                    <img src="<?php echo esc_url($img); ?>" alt="<?php the_title(); ?>">
+                                <?php endif; ?>
+                            <?php endif; ?>
+                            <div class="cliente-name"><?php the_title(); ?></div>
+                        </div>
+                    </div>
+            <?php endwhile;
+                wp_reset_postdata();
+            endif; ?>
+        </div>
+    </div>
+</section>
+
+
 
 <?php get_footer(); ?>
