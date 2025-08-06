@@ -353,3 +353,39 @@ header.bg-dark {
   line-height: 1.4;
   flex-grow: 1;
 }
+
+
+/* --- Seção: Centralize sua comunicação --- */
+.centralize-comunicacao { background: #f5fdfa; padding: 60px 0; }
+.cc-title { font-size: 2.2rem; font-weight: 700; color: #23272f; margin-bottom: .5rem; }
+.cc-subtitle { font-size: 1.4rem; font-weight: 500; color: #444d56; margin-bottom: 1.2rem; }
+.cc-desc { font-size: 1rem; color: #5a5f69; line-height: 1.6; margin-bottom: 1.8rem; }
+.cc-cta { font-size: 1.1rem; padding: 10px 26px; }
+
+/* Imagem ilustrativa */
+.cc-img { max-width: 100%; height: auto; }
+
+/* Botões pequenos (linha de bots) */
+.cc-buttons { margin-top: 40px; }
+.cc-small-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 10px;
+  padding: 8px 14px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  transition: transform .15s;
+}
+.cc-small-card:hover {
+  transform: translateY(-2px);
+}
+.cc-small-card img { width: 28px; height: auto; margin-right: 8px; }
+.cc-small-card span { font-size: .95rem; color: #444d56; }
+
+/* Responsividade */
+@media (max-width: 991px) {
+  .cc-title { font-size: 1.8rem; }
+  .cc-subtitle { font-size: 1.2rem; }
+  .cc-desc { font-size: .95rem; }
+  .cc-buttons { justify-content: center; }
+}
