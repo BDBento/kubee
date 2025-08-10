@@ -1,142 +1,117 @@
 <?php get_header(); ?>
 
-<?php
-$banner_title    = get_theme_mod('kubee_banner_title', 'Atendimento Centralizado e Eficiente');
-$banner_subtitle = get_theme_mod('kubee_banner_subtitle', 'Plataforma que unifica');
-$banner_desc     = get_theme_mod('kubee_banner_desc', 'com inteligência artificial e chatbots');
-$whatsapp        = get_theme_mod('kubee_whatsapp_number', '5599999999999');
+<?php 
+get_template_part('template-parts/banner-home');
 
-$banner_imgs = [];
-for ($i = 1; $i <= 3; $i++) {
-    $img = get_theme_mod("kubee_banner_img_$i");
-    if ($img) $banner_imgs[] = esc_url($img);
-}
-if (empty($banner_imgs)) {
-    $banner_imgs = [get_template_directory_uri() . '/assets/img/banner-default.png'];
-}
+get_template_part('template-parts/nossos-servicos'); 
+
+get_template_part('template-parts/clientes-home');
+
+get_template_part('template-parts/comunicacao-home');
+
+get_template_part('template-parts/planos-home');
+
 ?>
 
-<section class="banner-home">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 banner-content">
-                <h1 class="banner-title"><?php echo esc_html($banner_title); ?></h1>
-                <p class="banner-subtitle"><?php echo esc_html($banner_subtitle); ?></p>
-                <p class="banner-desc"><?php echo esc_html($banner_desc); ?></p>
-                <a href="https://wa.me/<?php echo esc_attr($whatsapp); ?>" class="btn btn-primary">
-                    <i class="bi bi-whatsapp"></i> COMECE AGORA
-                </a>
-            </div>
-            <div class="col-lg-6 banner-images">
-                <?php foreach ($banner_imgs as $img): ?>
-                    <div class="banner-img">
-                        <img src="<?php echo esc_url($img); ?>" alt="">
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="negocios-lista-home">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="section-title">Explore <span>nossos serviços</span></h2>
-            <p class="section-desc">Tudo o que sua equipe precisa para otimizar processos e atender melhor.</p>
-        </div>
-        <div class="row g-4">
-            <?php
-            $q = new WP_Query(['post_type' => 'negocios', 'posts_per_page' => 6]);
-            if ($q->have_posts()):
-                while ($q->have_posts()): $q->the_post();
-                    $icon = get_post_meta(get_the_ID(), '_negocio_icon_url', true);
-                    $subt = get_post_meta(get_the_ID(), '_negocio_subtitulo', true);
-                    $res  = get_post_meta(get_the_ID(), '_negocio_resumo', true);
-            ?>
-                    <div class="col-md-4">
-                        <div class="negocio-card">
-                            <div class="negocio-header d-flex align-items-center">
-                                <div class="negocio-icon">
-                                    <?php if ($icon): ?><img src="<?php echo esc_url($icon); ?>" alt="" class="negocio-icon"><?php endif; ?>
-                                </div>
-                                <div class="negocio-title">
-                                    <h3><?php the_title(); ?></h3>
-                                </div>
-                            </div>
-                            <?php if ($subt): ?><h4><?php echo esc_html($subt); ?></h4><?php endif; ?>
-                            <p><?php echo esc_html($res); ?></p>
-
-                        </div>
-                    </div>
-            <?php endwhile;
-                wp_reset_postdata();
-            endif; ?>
-        </div>
-    </div>
-</section>
-
-
-<section class="clientes-lista-home">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="section-title">Conheça alguns de <span>nossos clientes.</span></h2>
-        </div>
-        <div class="row g-4 justify-content-center">
-            <?php
-            $qp = new WP_Query(['post_type' => 'clientes', 'posts_per_page' => 12]);
-            if ($qp->have_posts()):
-                while ($qp->have_posts()): $qp->the_post();
-                    $media = get_post_meta(get_the_ID(), '_cliente_media_id', true);
-                    $link = get_post_meta(get_the_ID(), '_cliente_link', true);
-                    $img = $media ? wp_get_attachment_image_url($media, 'medium') : '';
-            ?>
-                    <div class="col-6 col-md-3">
-                        <div class="cliente-card">
-                            <?php if ($img): ?>
-                                <?php if ($link): ?>
-                                    <a href="<?php echo esc_url($link); ?>" target="_blank">
-                                        <img src="<?php echo esc_url($img); ?>" alt="<?php the_title(); ?>">
-                                    </a>
-                                <?php else: ?>
-                                    <img src="<?php echo esc_url($img); ?>" alt="<?php the_title(); ?>">
-                                <?php endif; ?>
-                            <?php endif; ?>
-                            <div class="cliente-name"><?php the_title(); ?></div>
-                        </div>
-                    </div>
-            <?php endwhile;
-                wp_reset_postdata();
-            endif; ?>
-        </div>
-    </div>
-</section>
-
-<section class="centralize-comunicacao py-5">
+<section class="depoimentos-home py-5">
   <div class="container">
-    <div class="row align-items-center gy-4">
-      <!-- Texto explicativo -->
-      <div class="col-lg-6">
-        <h2 class="cc-title">Centralize sua comunicação</h2>
-        <p class="cc-subtitle">Com mais eficiência,<br>e produtividade para sua empresa</p>
-        <p class="cc-desc">Automatize suas vendas e melhore a eficiência do atendimento com nosso software completo para WhatsApp. Ofereça um atendimento rápido, organizado e de alta qualidade aos seus clientes!</p>
-        <a href="#" class="btn btn-primary cc-cta">Conheça mais</a>
-      </div>
-      <!-- Imagem ao lado -->
-      <div class="col-lg-6 text-center">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/illustration-communication.svg" alt="Comunicação centralizada" class="cc-img img-fluid">
-      </div>
+    <div class="text-center mb-3">
+      <h2 class="dep-title"><span>Depoimento</span> dos nossos clientes</h2>
+      <p class="dep-sub">Relatos reais de clientes que alcançaram resultados excepcionais.<br>Veja abaixo:</p>
     </div>
-    <!-- Botões ou cards lineares abaixo -->
-    <div class="d-flex flex-wrap justify-content-center mt-4 cc-buttons">
-      <?php for ($i=1; $i<=4; $i++): ?>
-        <div class="cc-small-card mx-2 my-2">
-          <img src="<?php echo get_template_directory_uri(); ?>/assets/img/icon-bot.svg" alt="Bot">
-          <span>Bot de Atendimento</span>
+
+    <?php
+    // Busca depoimentos
+    $qd = new WP_Query([
+      'post_type'      => 'depoimentos',
+      'posts_per_page' => -1,
+      'orderby'        => 'menu_order date',
+      'order'          => 'ASC'
+    ]);
+
+    // Monta array de cards prontos (para poder agrupar em slides)
+    $cards = [];
+    if ($qd->have_posts()):
+      while ($qd->have_posts()): $qd->the_post();
+        $cargo   = get_post_meta(get_the_ID(), '_dep_cargo', true);
+        $nota    = (int) get_post_meta(get_the_ID(), '_dep_nota', true);
+        $mediaID = (int) get_post_meta(get_the_ID(), '_dep_media_id', true);
+        $avatar  = $mediaID ? wp_get_attachment_image_url($mediaID,'thumbnail') : '';
+        ob_start(); ?>
+          <article class="dep-card h-100">
+            <div class="dep-text"><?php echo wpautop( esc_html( get_the_excerpt() ?: wp_strip_all_tags(get_the_content()) ) ); ?></div>
+            <div class="dep-footer d-flex align-items-center">
+              <div class="dep-avatar">
+                <?php if($avatar): ?><img src="<?php echo esc_url($avatar); ?>" alt="<?php the_title_attribute(); ?>">
+                <?php else: ?><span class="dep-avatar-fallback"></span><?php endif; ?>
+              </div>
+              <div class="ms-2">
+                <div class="dep-name"><?php the_title(); ?></div>
+                <?php if($cargo): ?><div class="dep-role"><?php echo esc_html($cargo); ?></div><?php endif; ?>
+              </div>
+              <div class="ms-auto dep-stars" aria-label="Nota <?php echo $nota; ?> de 5">
+                <?php for($i=1;$i<=5;$i++): ?>
+                  <span class="star <?php echo $i <= $nota ? 'on':'off'; ?>">★</span>
+                <?php endfor; ?>
+              </div>
+            </div>
+          </article>
+        <?php
+        $cards[] = ob_get_clean();
+      endwhile; wp_reset_postdata();
+    endif;
+
+    $total = count($cards);
+
+    // <= 3: grid simples
+    if ($total <= 3): ?>
+      <div class="row g-4 justify-content-center">
+        <?php foreach ($cards as $html): ?>
+          <div class="col-md-4"><?php echo $html; ?></div>
+        <?php endforeach; ?>
+      </div>
+
+    <?php else:
+      // > 3: carrossel (3 por slide)
+      $slides = array_chunk($cards, 3);
+      $cid = 'depCarousel'; ?>
+      <div id="<?php echo $cid; ?>" class="carousel slide" data-bs-ride="carousel" data-bs-interval="7000">
+        <!-- indicators -->
+        <div class="carousel-indicators">
+          <?php foreach ($slides as $i => $_): ?>
+            <button type="button" data-bs-target="#<?php echo $cid; ?>" data-bs-slide-to="<?php echo $i; ?>"
+                    class="<?php echo $i===0?'active':''; ?>" aria-label="Slide <?php echo $i+1; ?>"
+                    <?php if($i===0) echo 'aria-current="true"'; ?>></button>
+          <?php endforeach; ?>
         </div>
-      <?php endfor; ?>
-    </div>
+
+        <!-- slides -->
+        <div class="carousel-inner">
+          <?php foreach ($slides as $i => $group): ?>
+            <div class="carousel-item <?php echo $i===0?'active':''; ?>">
+              <div class="row g-4 justify-content-center">
+                <?php foreach ($group as $html): ?>
+                  <div class="col-md-4"><?php echo $html; ?></div>
+                <?php endforeach; ?>
+              </div>
+            </div>
+          <?php endforeach; ?>
+        </div>
+
+        <!-- controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#<?php echo $cid; ?>" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#<?php echo $cid; ?>" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Próximo</span>
+        </button>
+      </div>
+    <?php endif; ?>
   </div>
 </section>
+
 
 
 <?php get_footer(); ?>

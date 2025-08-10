@@ -1,0 +1,34 @@
+<section class="clientes-lista-home">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">Conheça alguns de <span>nossos clientes.</span></h2>
+        </div>
+        <div class="row g-4 justify-content-center">
+            <?php
+            $qp = new WP_Query(['post_type' => 'clientes', 'posts_per_page' => 12, 'orderby' => 'rand']);
+            if ($qp->have_posts()):
+                while ($qp->have_posts()):
+                    $qp->the_post();
+                    $media = get_post_meta(get_the_ID(), '_cliente_media_id', true);
+                    $link = get_post_meta(get_the_ID(), '_cliente_link', true);
+                    $img = $media ? wp_get_attachment_image_url($media, 'medium') : '';
+                    ?>
+                    <div class="col-6 col-md-3">
+                        <div class="cliente-card">
+                            <?php if ($img): ?>
+                                <?php if ($link): ?>
+                                    <a href="<?php echo esc_url($link); ?>" target="_blank">
+                                        <img src="<?php echo esc_url($img); ?>" alt="<?php the_title(); ?>">
+                                    </a>
+                                <?php else: ?>
+                                    <img src="<?php echo esc_url($img); ?>" alt="<?php the_title(); ?>">
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                <?php endwhile;
+                wp_reset_postdata();
+            endif; ?>
+        </div>
+    </div>
+</section>

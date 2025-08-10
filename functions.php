@@ -107,8 +107,15 @@ add_action( 'admin_enqueue_scripts', 'kubee_clientes_admin_enqueue' );
 
 // Função para carregar os campos do Customizer do banner
 require get_template_directory() . '/assets/functions-customiser/function-banner.php';
+
 // Função para registrar o post type "Serviços"
 require get_template_directory() . '/assets/post-type/negocios.php';
 
 // Função para registrar o post type "Nossos Clientes"
 require get_template_directory() . '/assets/post-type/nossos-clientes.php';
+
+// Função para registrar o post type "Planos"
+require get_template_directory() . '/assets/post-type/planos.php';
+
+// Função para registrar o post type "Depoimentos"
+require get_template_directory() . '/assets/post-type/depoimentos.php';
