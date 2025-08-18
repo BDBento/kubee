@@ -36,7 +36,7 @@
                         <div class="plano-card h-100" data-preco-mensal="<?php echo esc_attr($pm); ?>"
                             data-preco-anual="<?php echo esc_attr($pa); ?>">
                             <h3 class="plano-title"><?php the_title(); ?></h3>
-                            <div class="plano-sub">O que vem incluso</div>
+                            <div class="plano-sub"><?php the_excerpt() ?></div>
                             <ul class="plano-list">
                                 <?php foreach ($rec as $r): ?>
                                     <li><i class="bi bi-check2"></i> <?php echo esc_html($r); ?></li>

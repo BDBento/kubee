@@ -600,6 +600,7 @@ header.bg-dark {
   font-size: 1.2rem;
   display: inline-block;
   width: 1em;
+  display: none;
 }
 
 .plano-preco {
