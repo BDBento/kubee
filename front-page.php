@@ -3,13 +3,16 @@
 <?php 
 get_template_part('template-parts/banner-home');
 
-get_template_part('template-parts/nossos-servicos'); 
+get_template_part('template-parts/nossos_servicos'); 
 
 get_template_part('template-parts/clientes-home');
 
 get_template_part('template-parts/comunicacao-home');
 
 get_template_part('template-parts/planos-home');
+
+
+
 
 ?>
 

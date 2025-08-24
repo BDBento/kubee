@@ -12,7 +12,7 @@
             </div>
             <!-- Imagem ao lado -->
             <div class="col-lg-6 text-center">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-kubbe-g.png"
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/kubbe-logo-transparente.png"
                     alt="Comunicação centralizada" class="cc-img img-fluid">
             </div>
         </div>

@@ -100,7 +100,9 @@ add_action( 'admin_enqueue_scripts', 'kubee_clientes_admin_enqueue' );
 
 
 
-
+add_action('after_setup_theme', function(){
+  add_theme_support('align-wide'); // Gutenberg com alignwide/alignfull
+});
 
 
 
@@ -119,3 +121,6 @@ require get_template_directory() . '/assets/post-type/planos.php';
 
 // Função para registrar o post type "Depoimentos"
 require get_template_directory() . '/assets/post-type/depoimentos.php';
+
+// Função para registrar o post type "Ferramentas Usadas"
+require get_template_directory() . '/assets/post-type/ferramentas-usadas.php';

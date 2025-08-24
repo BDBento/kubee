@@ -4,7 +4,7 @@
             <div class="row align-items-center py-5">
                 <!-- Logo -->
                 <div class="col-12 col-md-3 mb-4 mb-md-0 text-center text-md-start">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-footer.png" alt="LevelWork Logo" style="max-width: 145px;">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-branco-horizontal.png" alt="LevelWork Logo" style="max-width: 145px;">
                 </div>
                 <!-- Menus -->
                 <div class="col-6 col-md-3 mb-3 mb-md-0">
