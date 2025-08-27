@@ -5,9 +5,81 @@ get_template_part('template-parts/banner-home');
 
 get_template_part('template-parts/nossos_servicos'); 
 
-get_template_part('template-parts/clientes-home');
-
 get_template_part('template-parts/comunicacao-home');
+
+?>
+<section class="clientes-lista-home py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title">Conheça alguns de <span>nossos clientes.</span></h2>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      <?php
+      $qp = new WP_Query([
+        'post_type'           => 'clientes',
+        'post_status'         => 'publish',
+        'posts_per_page'      => 12,
+        'orderby'             => 'rand',
+        'ignore_sticky_posts' => true,
+        'no_found_rows'       => true,
+        'suppress_filters'    => true,
+      ]);
+
+      if ($qp->have_posts()):
+        while ($qp->have_posts()):
+          $qp->the_post();
+
+          // 1) tenta imagem destacada; 2) meta _cliente_media_id
+          $thumb_id = get_post_thumbnail_id();
+          if (!$thumb_id) {
+            $meta_id = (int) get_post_meta(get_the_ID(), '_cliente_media_id', true);
+            if ($meta_id) $thumb_id = $meta_id;
+          }
+
+          $link  = trim((string) get_post_meta(get_the_ID(), '_cliente_link', true));
+          $title = get_the_title();
+          ?>
+          <div class="col-6 col-md-3">
+            <div class="cliente-card text-center">
+              <?php if ($thumb_id): ?>
+                <?php if ($link): ?><a href="<?php echo esc_url($link); ?>" target="_blank" rel="noopener"><?php endif; ?>
+                  <?php
+                  echo wp_get_attachment_image(
+                    $thumb_id,
+                    'medium',
+                    false,
+                    [
+                      'class'    => 'img-fluid',
+                      'alt'      => esc_attr($title),
+                      'loading'  => 'lazy',
+                      'decoding' => 'async',
+                    ]
+                  );
+                  ?>
+                <?php if ($link): ?></a><?php endif; ?>
+              <?php else: ?>
+                <div class="placeholder-cliente" aria-label="<?php echo esc_attr($title); ?>">
+                  <?php echo esc_html($title); ?>
+                </div>
+              <?php endif; ?>
+            </div>
+          </div>
+        <?php
+        endwhile;
+        wp_reset_postdata();
+      else:
+        echo '<p class="text-center m-0">Nenhum cliente publicado.</p>';
+      endif;
+      ?>
+    </div>
+  </div>
+</section>
+
+
+<?php
+
+
 
 get_template_part('template-parts/planos-home');
 

@@ -124,3 +124,15 @@ require get_template_directory() . '/assets/post-type/depoimentos.php';
 
 // Função para registrar o post type "Ferramentas Usadas"
 require get_template_directory() . '/assets/post-type/ferramentas-usadas.php';
+
+
+function kubee_format_preco_label($raw){
+  $raw = trim((string)$raw);
+  if ($raw === '') return '';
+  $digits = preg_replace('/\D+/', '', $raw); // só números
+  if ($digits === '') return '';
+  $valor = (int)$digits;
+  return 'A partir de R$ ' . number_format($valor, 2, ',', '.');
+}
+
+

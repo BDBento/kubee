@@ -922,3 +922,109 @@ header.bg-dark {
             grid-column: auto
         }
     }
+
+
+
+  /* ===== Planos (look do print) ===== */
+.planos-home{
+  --verde: #1DB18A;
+  --verde-700: #159673;
+  --verde-100: #eaf7ef;
+  --cinza-900:#0f172a;
+  --cinza-700:#334155;
+  --shadow: 0 6px 24px rgba(0,0,0,.06);
+  --radius: 18px;
+}
+.planos-home [hidden]{display:none !important}
+
+/* Toggle tipo (pílula) */
+.planos-home .planos-toggle{
+  display:inline-flex; 
+  gap:6px;
+  padding:6px;
+  background:#eef7f1; 
+  border-radius:999px;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.04);
+  width: auto;
+}
+.planos-home .planos-toggle .btn{
+  border:0; 
+  border-radius:999px; 
+  padding:.55rem 1.15rem;
+  font-weight:600; 
+  color:var(--cinza-900); 
+  background:transparent;
+  
+}
+.planos-home .planos-toggle .btn.active{
+  background:var(--verde);
+  color:#fff;
+  box-shadow:0 4px 14px rgba(34,197,94,.35);
+}
+
+.planos-toggle .btn-outline-primary:hover{
+  background:rgba(29,177,138,.08);
+  border-color:rgba(29,177,138,.16);
+}
+
+/* Cards */
+.planos-home .plano-card{
+  border:0; 
+  border-radius:var(--radius);
+  box-shadow:var(--shadow); 
+  background:#fff;
+  margin-bottom: 0PX;
+}
+.planos-home .plano-card .card-body{
+  padding:24px 20px 18px; 
+  display:flex; 
+  flex-direction:column;
+}
+.card-title{
+  font-size:1.35rem; 
+  font-weight:800; 
+  color:var(--cinza-900); 
+  margin-bottom:6px;
+}
+
+.planos-home .plano-card .card-text{
+  color:var(--verde-700); 
+  font-weight:600; 
+  margin-bottom:12px;
+}
+
+/* Preço em destaque, abaixo do botão */
+.planos-home .plano-preco{ 
+  order:4; 
+  margin-top:12px; 
+  text-align:center; 
+  font-size: 18px;
+}
+.planos-home .plano-preco .preco{
+  display:inline-block; 
+  padding:.55rem .9rem; 
+  border-radius:10px;
+  
+  color:var(--cinza-900); 
+  font-weight:800;
+}
+
+/* Reordena blocos para ficar como no print: título > subtítulo > lista > CTA > preço */
+.planos-home .plano-card .card-text{ 
+  order:1; 
+}
+.planos-home .plano-card .lista-recursos{ 
+  order:2; 
+}
+.planos-home .plano-card .mt-auto{ 
+  order:3; 
+} /* container do botão */
+.planos-home .plano-card .plano-preco{ 
+  order:4; 
+}
+
+/* Espaçamentos e colunas responsivas (refina Bootstrap) */
+@media (min-width: 768px){
+  .planos-home .col-md-4{ display:flex; }
+  .planos-home .plano-card{ width:100%; }
+}

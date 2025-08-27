@@ -4,6 +4,23 @@
   <meta charset="<?php bloginfo('charset'); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <?php wp_head(); ?>
+
+<!-- Open Graph / Facebook / Instagram -->
+<meta property="og:title" content="Kube - Solução simples e eficiente para o seu dia a dia" />
+<meta property="og:description" content="O Kube deixa sua rotina mais prática. Fácil de usar, rápido e direto ao ponto. Confira os depoimentos de quem já usa." />
+<meta property="og:image" content="https://www.kubee.com.br/wp-content/themes/kubee/assets/img/kubbe-logo-transparente.png" />
+<meta property="og:url" content="https://www.kubee.com.br/" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:site_name" content="Kube" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Kube - Solução simples e eficiente para o seu dia a dia" />
+<meta name="twitter:description" content="O Kube deixa sua rotina mais prática. Fácil de usar, rápido e direto ao ponto." />
+<meta name="twitter:image" content="https://www.kubee.com.br/wp-content/themes/kubee/assets/img/kubbe-logo-transparente.png" />
+<meta name="twitter:site" content="@seuusuario" />
+
 </head>
 <body <?php body_class(); ?>>
 

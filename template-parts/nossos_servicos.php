@@ -1,4 +1,4 @@
-<section class="negocios-lista-home">
+<section class="negocios-lista-home" id="nossos-servicos">
   <div class="container">
     <div class="text-center mb-5">
       <h2 class="section-title">Explore <span>nossos serviços</span></h2>
@@ -36,11 +36,7 @@
                 <?php endif; ?>
 
                 <div class="negocio-title">
-                  <h3 class="h5 m-0">
-                    <a href="<?php the_permalink(); ?>" class="stretched-link">
-                      <?php the_title(); ?>
-                    </a>
-                  </h3>
+                 	<h3><?php the_title(); ?></h3>
                 </div>
               </header>
 
