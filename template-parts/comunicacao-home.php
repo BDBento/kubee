@@ -18,12 +18,30 @@
         </div>
         <!-- Botões ou cards lineares abaixo -->
         <div class="d-flex flex-wrap justify-content-center mt-4 cc-buttons">
-            <?php for ($i = 1; $i <= 4; $i++): ?>
-                <div class="cc-small-card mx-2 my-2">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/robo-chat.png" alt="Bot">
-                    <span>Bot de Atendimento</span>
-                </div>
-            <?php endfor; ?>
+            <?php
+            $q = new WP_Query([
+                'post_type'      => 'cc_botao',
+                'posts_per_page' => 4,                // ajuste se quiser
+                'orderby'        => 'menu_order title',
+                'order'          => 'ASC',
+            ]);
+            if ($q->have_posts()):
+                while ($q->have_posts()): $q->the_post();
+                    $texto = get_post_meta(get_the_ID(), '_cc_texto', true) ?: get_the_title();
+                    $link  = get_post_meta(get_the_ID(), '_cc_link', true) ?: '#';
+                    $imgID = (int) get_post_meta(get_the_ID(), '_cc_image_id', true);
+                    $img   = $imgID ? wp_get_attachment_image_url($imgID, 'medium') : get_template_directory_uri() . '/assets/img/robo-chat.png';
+            ?>
+                    <a href="<?php echo esc_url($link); ?>">
+                        <div class="cc-small-card mx-2 my-2">
+                            <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($texto); ?>">
+                            <span><?php echo esc_html($texto); ?></span>
+                        </div>
+                    </a>
+            <?php endwhile;
+                wp_reset_postdata();
+            endif; ?>
         </div>
+
     </div>
 </section>

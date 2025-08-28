@@ -126,6 +126,8 @@ require get_template_directory() . '/assets/post-type/depoimentos.php';
 require get_template_directory() . '/assets/post-type/ferramentas-usadas.php';
 
 
+require get_template_directory() . '/assets/post-type/cartoes.php';
+
 function kubee_format_preco_label($raw){
   $raw = trim((string)$raw);
   if ($raw === '') return '';

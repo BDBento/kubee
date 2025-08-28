@@ -1028,3 +1028,7 @@ header.bg-dark {
   .planos-home .col-md-4{ display:flex; }
   .planos-home .plano-card{ width:100%; }
 }
+
+.cc-buttons a{
+  text-decoration: none;
+}
