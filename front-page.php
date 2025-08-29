@@ -1,9 +1,9 @@
 <?php get_header(); ?>
 
-<?php 
+<?php
 get_template_part('template-parts/banner-home');
 
-get_template_part('template-parts/nossos_servicos'); 
+get_template_part('template-parts/nossos_servicos');
 
 get_template_part('template-parts/comunicacao-home');
 
@@ -39,7 +39,7 @@ get_template_part('template-parts/comunicacao-home');
 
           $link  = trim((string) get_post_meta(get_the_ID(), '_cliente_link', true));
           $title = get_the_title();
-          ?>
+      ?>
           <div class="col-6 col-md-3">
             <div class="cliente-card text-center">
               <?php if ($thumb_id): ?>
@@ -57,7 +57,7 @@ get_template_part('template-parts/comunicacao-home');
                     ]
                   );
                   ?>
-                <?php if ($link): ?></a><?php endif; ?>
+                  <?php if ($link): ?></a><?php endif; ?>
               <?php else: ?>
                 <div class="placeholder-cliente" aria-label="<?php echo esc_attr($title); ?>">
                   <?php echo esc_html($title); ?>
@@ -65,7 +65,7 @@ get_template_part('template-parts/comunicacao-home');
               <?php endif; ?>
             </div>
           </div>
-        <?php
+      <?php
         endwhile;
         wp_reset_postdata();
       else:
@@ -111,29 +111,30 @@ get_template_part('template-parts/planos-home');
         $cargo   = get_post_meta(get_the_ID(), '_dep_cargo', true);
         $nota    = (int) get_post_meta(get_the_ID(), '_dep_nota', true);
         $mediaID = (int) get_post_meta(get_the_ID(), '_dep_media_id', true);
-        $avatar  = $mediaID ? wp_get_attachment_image_url($mediaID,'thumbnail') : '';
+        $avatar  = $mediaID ? wp_get_attachment_image_url($mediaID, 'thumbnail') : '';
         ob_start(); ?>
-          <article class="dep-card h-100">
-            <div class="dep-text"><?php echo wpautop( esc_html( get_the_excerpt() ?: wp_strip_all_tags(get_the_content()) ) ); ?></div>
-            <div class="dep-footer d-flex align-items-center">
-              <div class="dep-avatar">
-                <?php if($avatar): ?><img src="<?php echo esc_url($avatar); ?>" alt="<?php the_title_attribute(); ?>">
-                <?php else: ?><span class="dep-avatar-fallback"></span><?php endif; ?>
-              </div>
-              <div class="ms-2">
-                <div class="dep-name"><?php the_title(); ?></div>
-                <?php if($cargo): ?><div class="dep-role"><?php echo esc_html($cargo); ?></div><?php endif; ?>
-              </div>
-              <div class="ms-auto dep-stars" aria-label="Nota <?php echo $nota; ?> de 5">
-                <?php for($i=1;$i<=5;$i++): ?>
-                  <span class="star <?php echo $i <= $nota ? 'on':'off'; ?>">★</span>
-                <?php endfor; ?>
-              </div>
+        <article class="dep-card h-100">
+          <div class="dep-text"><?php echo wpautop(esc_html(get_the_excerpt() ?: wp_strip_all_tags(get_the_content()))); ?></div>
+          <div class="dep-footer d-flex align-items-center">
+            <div class="dep-avatar">
+              <?php if ($avatar): ?><img src="<?php echo esc_url($avatar); ?>" alt="<?php the_title_attribute(); ?>">
+              <?php else: ?><span class="dep-avatar-fallback"></span><?php endif; ?>
             </div>
-          </article>
-        <?php
+            <div class="ms-2">
+              <div class="dep-name"><?php the_title(); ?></div>
+              <?php if ($cargo): ?><div class="dep-role"><?php echo esc_html($cargo); ?></div><?php endif; ?>
+            </div>
+            <div class="ms-auto dep-stars" aria-label="Nota <?php echo $nota; ?> de 5">
+              <?php for ($i = 1; $i <= 5; $i++): ?>
+                <span class="star <?php echo $i <= $nota ? 'on' : 'off'; ?>">★</span>
+              <?php endfor; ?>
+            </div>
+          </div>
+        </article>
+      <?php
         $cards[] = ob_get_clean();
-      endwhile; wp_reset_postdata();
+      endwhile;
+      wp_reset_postdata();
     endif;
 
     $total = count($cards);
@@ -155,15 +156,15 @@ get_template_part('template-parts/planos-home');
         <div class="carousel-indicators">
           <?php foreach ($slides as $i => $_): ?>
             <button type="button" data-bs-target="#<?php echo $cid; ?>" data-bs-slide-to="<?php echo $i; ?>"
-                    class="<?php echo $i===0?'active':''; ?>" aria-label="Slide <?php echo $i+1; ?>"
-                    <?php if($i===0) echo 'aria-current="true"'; ?>></button>
+              class="<?php echo $i === 0 ? 'active' : ''; ?>" aria-label="Slide <?php echo $i + 1; ?>"
+              <?php if ($i === 0) echo 'aria-current="true"'; ?>></button>
           <?php endforeach; ?>
         </div>
 
         <!-- slides -->
         <div class="carousel-inner">
           <?php foreach ($slides as $i => $group): ?>
-            <div class="carousel-item <?php echo $i===0?'active':''; ?>">
+            <div class="carousel-item <?php echo $i === 0 ? 'active' : ''; ?>">
               <div class="row g-4 justify-content-center">
                 <?php foreach ($group as $html): ?>
                   <div class="col-md-4"><?php echo $html; ?></div>
@@ -190,3 +191,5 @@ get_template_part('template-parts/planos-home');
 
 
 <?php get_footer(); ?>
+
+
