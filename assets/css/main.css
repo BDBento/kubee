@@ -501,7 +501,6 @@ header.bg-dark {
 .planos-toggle {
   display: flex;
   gap: 6px;
-  width: 100%;
   max-width: 560px;
   /* controla a largura do toggle */
   margin: 8px auto 24px;
