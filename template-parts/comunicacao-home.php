@@ -5,23 +5,29 @@
             <div class="col-lg-6">
                 <h2 class="cc-title">Centralize sua comunicação</h2>
                 <p class="cc-subtitle">Com mais eficiência,<br>e produtividade para sua empresa</p>
-                <p class="cc-desc">Automatize suas vendas e melhore a eficiência do atendimento com nosso software
+                <p class="cc-desc">
+                    Automatize suas vendas e melhore a eficiência do atendimento com nosso software
                     completo para WhatsApp. Ofereça um atendimento rápido, organizado e de alta qualidade aos seus
-                    clientes!</p>
+                    clientes!
+                </p>
                 <a href="#" class="btn btn-primary cc-cta">Conheça mais</a>
             </div>
-            <!-- Imagem ao lado -->
+
+            <!-- Vídeo ao lado -->
             <div class="col-lg-6 text-center">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/kubbe-logo-transparente.png"
-                    alt="Comunicação centralizada" class="cc-img img-fluid">
+                <video class="cc-video img-fluid" autoplay muted loop playsinline>
+                    <source src="https://www.kubee.com.br/wp-content/uploads/2025/08/WhatsApp-Video-2025-08-29-at-21.21.51.mp4" type="video/mp4">
+                    Seu navegador não suporta a reprodução de vídeo.
+                </video>
             </div>
         </div>
+
         <!-- Botões ou cards lineares abaixo -->
         <div class="d-flex flex-wrap justify-content-center mt-4 cc-buttons">
             <?php
             $q = new WP_Query([
                 'post_type'      => 'cc_botao',
-                'posts_per_page' => 4,                // ajuste se quiser
+                'posts_per_page' => 4,
                 'orderby'        => 'menu_order title',
                 'order'          => 'ASC',
             ]);
@@ -38,10 +44,7 @@
                             <span><?php echo esc_html($texto); ?></span>
                         </div>
                     </a>
-            <?php endwhile;
-                wp_reset_postdata();
-            endif; ?>
+            <?php endwhile; wp_reset_postdata(); endif; ?>
         </div>
-
     </div>
 </section>

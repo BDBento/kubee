@@ -7,7 +7,7 @@
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-branco-horizontal.png" alt="LevelWork Logo" style="max-width: 145px;">
                 </div>
                 <!-- Menus -->
-                <div class="col-6 col-md-3 mb-3 mb-md-0">
+                <div class="col-6 col-md-3 mb-3 mb-md-0 empresa-footer">
                     <h6 class="footer-title">Empresa</h6>
                     <?php
                     wp_nav_menu([
@@ -17,7 +17,7 @@
                     ]);
                     ?>
                 </div>
-                <div class="col-6 col-md-3 mb-3 mb-md-0">
+                <div class="col-12 col-md-3 mb-3 mb-md-12 atendimento-footer">
                         <h6 class="footer-title">Atendimento</h6>
                         <ul class="footer-contact list-unstyled">
                             <li class="d-flex gap-2">
@@ -79,12 +79,7 @@
     <div class="footer-bottom text-center py-3">
         <small>@ <?php echo date('Y'); ?> LevelWork. Todos os direitos reservados.</small>
     </div>
-    <button id="kubee-back-to-top"
-        class="kubee-back-to-top"
-        aria-label="Voltar ao topo"
-        title="Voltar ao topo">
-  ↑
-    </button>
+    
     <script>
 (function(){
   "use strict";
