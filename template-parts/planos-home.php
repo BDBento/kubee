@@ -1,4 +1,4 @@
-<section class="planos-home py-5">
+<section class="planos-home py-5" id="planos">
   <div class="container">
     <div class="text-center mb-4">
       <h2 class="section-title">Confira nossos planos </h2>

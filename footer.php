@@ -27,7 +27,7 @@
                                         <path d="M602 118.6 537.1 15C531.3 5.7 521 0 510 0H106C95 0 84.7 5.7 78.9 15L14 118.6c-33.5 53.5-3.8 127.9 58.8 136.4 4.5.6 9.1.9 13.7.9 29.6 0 55.8-13 73.8-33.1 18 20.1 44.3 33.1 73.8 33.1 29.6 0 55.8-13 73.8-33.1 18 20.1 44.3 33.1 73.8 33.1 29.6 0 55.8-13 73.8-33.1 18.1 20.1 44.3 33.1 73.8 33.1 4.7 0 9.2-.3 13.7-.9 62.8-8.4 92.6-82.8 59-136.4zM529.5 288c-10 0-19.9-1.5-29.5-3.8V384H116v-99.8c-9.6 2.2-19.5 3.8-29.5 3.8-6 0-12.1-.4-18-1.2-5.6-.8-11.1-2.1-16.4-3.6V480c0 17.7 14.3 32 32 32h448c17.7 0 32-14.3 32-32V283.2c-5.4 1.6-10.8 2.9-16.4 3.6-6.1.8-12.1 1.2-18.2 1.2z" />
                                     </svg>
                                 </span>
-                                <span>Eva | Plataforma Multi-Channel para Gestão Integrada</span>
+                                <span>Kubee | Plataforma Multi-Channel para Gestão Integrada</span>
                             </li>
 
                             <li class="d-flex gap-2">
@@ -49,7 +49,7 @@
                                         <path d="M464 64H48C21.5 64 0 85.5 0 112v288c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zm0 48v40.8c-22.4 18.3-58.2 46.7-134.6 106.5-16.8 13.2-50.2 45.1-73.4 44.7-23.2.3-56.6-31.5-73.4-44.7C106.2 199.5 70.4 171.1 48 152.8V112h416zM48 400V214.4c22.9 18.3 55.4 43.9 104.9 82.6 21.9 17.2 60.1 55.2 103.1 55 42.7.2 80.5-37.2 103-54.9 49.6-38.8 82-64.4 105-82.7V400H48z" />
                                     </svg>
                                 </span>
-                                <a class="link-underline link-underline-opacity-0" href="mailto:eva@levelwork.io">eva@levelwork.io</a>
+                                <a class="link-underline link-underline-opacity-0" href="mailto:contato@kubee.com">contato@kubee.com</a>
                             </li>
 
                             <li class="d-flex gap-2">
@@ -79,6 +79,121 @@
     <div class="footer-bottom text-center py-3">
         <small>@ <?php echo date('Y'); ?> LevelWork. Todos os direitos reservados.</small>
     </div>
+    <button id="kubee-back-to-top"
+        class="kubee-back-to-top"
+        aria-label="Voltar ao topo"
+        title="Voltar ao topo">
+  ↑
+    </button>
+    <script>
+(function(){
+  "use strict";
+
+  /* ===== CONFIG ===== */
+  const HEADER_SELECTOR = ".site-header, .main-menu, header"; // ajuste conforme seu tema
+  const BTN_BG = "#34b092";
+  const BTN_FG = "#ffffff";
+  const DURATION = 1200; // duração em ms da rolagem suave
+
+  /* ===== HELPERS ===== */
+  const qs = (sel, ctx=document) => ctx.querySelector(sel);
+  const byId = (id) => document.getElementById(id);
+
+  function getOffsets(){
+    const admin = document.body.classList.contains("admin-bar") ? 32 : 0;
+    const headerEl = qs(HEADER_SELECTOR);
+    const headerH = headerEl ? headerEl.getBoundingClientRect().height : 0;
+    return admin + headerH;
+  }
+
+  function animateScrollTo(targetY){
+    const startY = window.scrollY;
+    const diff = targetY - startY;
+    let start;
+
+    function easeInOutQuad(t){ return t<0.5 ? 2*t*t : -1+(4-2*t)*t; }
+
+    function step(timestamp){
+      if (!start) start = timestamp;
+      const time = timestamp - start;
+      const percent = Math.min(time / DURATION, 1);
+      const eased = easeInOutQuad(percent);
+      window.scrollTo(0, startY + diff * eased);
+      if (time < DURATION) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function targetYForId(id){
+    const el = byId(id);
+    if (!el) return 0;
+    const top = el.getBoundingClientRect().top + window.pageYOffset;
+    return Math.max(0, top - getOffsets() - 8);
+  }
+
+  /* ===== BUTTON ===== */
+  const btn = document.createElement("button");
+  btn.id = "kubee-back-to-top";
+  btn.textContent = "↑";
+  Object.assign(btn.style, {
+    position:"fixed",right:"16px",bottom:"16px",width:"48px",height:"48px",
+    border:"none",borderRadius:"999px",background:BTN_BG,color:BTN_FG,
+    fontSize:"20px",lineHeight:"48px",textAlign:"center",cursor:"pointer",
+    boxShadow:"0 6px 18px rgba(0,0,0,.2)",zIndex:"9999",
+    opacity:"0",visibility:"hidden",transform:"translateY(8px)",
+    transition:"opacity .4s, transform .4s, visibility .4s"
+  });
+  document.body.appendChild(btn);
+
+  const header = qs(HEADER_SELECTOR) || document.body;
+  if ("IntersectionObserver" in window && header !== document.body){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if (entry.isIntersecting) btn.style.opacity="0",btn.style.visibility="hidden";
+        else btn.style.opacity="1",btn.style.visibility="visible",btn.style.transform="translateY(0)";
+      });
+    });
+    io.observe(header);
+  } else {
+    window.addEventListener("scroll", ()=>{
+      if (window.scrollY > 200){
+        btn.style.opacity="1"; btn.style.visibility="visible"; btn.style.transform="translateY(0)";
+      } else {
+        btn.style.opacity="0"; btn.style.visibility="hidden";
+      }
+    },{passive:true});
+  }
+
+  btn.addEventListener("click", e=>{
+    e.preventDefault();
+    animateScrollTo(0);
+    history.pushState(null,"",location.pathname + location.search);
+  });
+
+  /* ===== ANCORAS ===== */
+  document.addEventListener("click", e=>{
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const hash = a.getAttribute("href");
+    if (hash === "#") return;
+    const id = hash.slice(1);
+    if (byId(id)){
+      e.preventDefault();
+      animateScrollTo(targetYForId(id));
+      history.pushState(null,"",hash);
+    }
+  });
+
+  window.addEventListener("load", ()=>{
+    if (location.hash && byId(location.hash.slice(1))){
+      setTimeout(()=> animateScrollTo(targetYForId(location.hash.slice(1))),0);
+    }
+  });
+
+})();
+</script>
+
+
 </footer>
 <?php wp_footer(); ?>
 </body>
