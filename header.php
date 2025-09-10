@@ -22,34 +22,50 @@
 <meta name="twitter:site" content="@seuusuario" />
 
 </head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CTMZ1SX6L3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CTMZ1SX6L3');
+</script>
+
 <body <?php body_class(); ?>>
 
-<header class="bg-dark text-white py-3">
-  <div class="container d-flex justify-content-between align-items-center">
-    
+<header class="navbar navbar-expand-md navbar-dark bg-dark py-3">
+  <div class="container">
     <!-- Logo -->
     <a href="<?php echo esc_url(home_url('/')); ?>" class="navbar-brand d-flex align-items-center">
-      <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-kube-horizontal.png" alt="Kubee Logo" style="height: 50px;width: 189;">
+      <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-kube-horizontal.png"
+           alt="Kubee Logo" style="height:50px;width:189px">
     </a>
 
-    <!-- Menu (padrão WP) -->
-    <nav class="d-none d-md-block">
+    <!-- Botão toggler (mobile) -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+            aria-controls="mainNav" aria-expanded="false" aria-label="Alternar navegação">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menu + CTA -->
+    <div class="collapse navbar-collapse" id="mainNav">
       <?php
       wp_nav_menu([
         'theme_location' => 'main_menu',
-        'menu_class'     => 'nav gap-4', // adiciona espaçamento igual ao Bootstrap
         'container'      => false,
+        'menu_class'     => 'navbar-nav ms-auto gap-3',
         'fallback_cb'    => false,
       ]);
       ?>
-    </nav>
 
-    <!-- Botão WhatsApp -->
-    <?php
-$whatsapp = get_theme_mod('kubee_whatsapp_number', '5567999999999'); // valor padrão
-?>
-<a href="https://wa.me/<?php echo esc_attr($whatsapp); ?>" target="_blank" class="btn btn-primary d-flex align-items-center gap-2 rounded-3">
-  <i class="bi bi-whatsapp"></i> ENTRE EM CONTATO
-</a>
+      <?php $whatsapp = get_theme_mod('kubee_whatsapp_number', '5567999999999'); ?>
+      <!-- CTA visível dentro do collapse no mobile -->
+      <a href="https://wa.me/<?php echo esc_attr($whatsapp); ?>" target="_blank"
+         class="btn btn-primary ms-md-3 mt-3 mt-md-0 d-inline-flex align-items-center gap-2 rounded-3">
+        <i class="bi bi-whatsapp"></i> ENTRE EM CONTATO
+      </a>
+    </div>
   </div>
 </header>

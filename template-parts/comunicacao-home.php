@@ -3,14 +3,14 @@
         <div class="row align-items-center gy-4">
             <!-- Texto explicativo -->
             <div class="col-lg-6">
-                <h2 class="cc-title">Centralize sua comunicação</h2>
+                <h2 class="cc-title">Centralize sua comunicação com eficiência</h2>
                 <p class="cc-subtitle">Com mais eficiência,<br>e produtividade para sua empresa</p>
                 <p class="cc-desc">
-                    Automatize suas vendas e melhore a eficiência do atendimento com nosso software
-                    completo para WhatsApp. Ofereça um atendimento rápido, organizado e de alta qualidade aos seus
-                    clientes!
+                    Aumente a produtividade da sua empresa com nosso CRM inteligente. Automatize vendas e otimize o atendimento pelo WhatsApp, oferecendo respostas rápidas, organizadas e de alta qualidade que cativam seus clientes.
                 </p>
-                <a href="#" class="btn btn-primary cc-cta">Conheça mais</a>
+                <a href="https://wa.me/<?php echo esc_attr($whatsapp); ?>" target="_blank" class="btn btn-primary align-items-center gap-2 rounded-3">
+                    Conheça mais
+                </a>
             </div>
 
             <!-- Vídeo ao lado -->
