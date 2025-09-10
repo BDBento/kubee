@@ -192,6 +192,25 @@
 </footer>
 <?php wp_footer(); ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const nav = document.getElementById('mainNav');
+  const toggler = document.querySelector('.navbar-toggler');
+  if (!nav || !toggler) return;
+
+  // cria/obtém a instância SEM auto-toggle
+  const c = bootstrap.Collapse.getOrCreateInstance(nav, { toggle: false });
+
+  // abre/fecha sempre que clicar no ícone
+  toggler.addEventListener('click', function () { c.toggle(); });
+
+  // fecha ao clicar em qualquer link do menu
+  nav.addEventListener('click', function (e) {
+    if (e.target.closest('.nav-link')) c.hide();
+  });
+});
+</script>
+
 </body>
 
 </html>

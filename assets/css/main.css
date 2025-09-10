@@ -11,6 +11,10 @@
   --kubee-body-text: #23272f;
 }
 
+.navbar-toggler{ position:relative; z-index:1051; }
+.navbar-collapse{ z-index:1050; }
+
+
 /* Reset global e tipografia base */
 * {
   margin: 0;
