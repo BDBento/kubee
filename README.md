@@ -1,5 +1,9 @@
 # Kubee – WordPress Theme
 
+![WordPress](https://img.shields.io/badge/WordPress-Compatible-blue)
+![PHP](https://img.shields.io/badge/PHP-7.4%2B-purple)
+![License](https://img.shields.io/badge/license-GPLv2-green)
+
 Tema WordPress responsivo desenvolvido para o site **Kubee**.
 
 O objetivo do tema é apresentar **pacotes de serviços e soluções digitais**, com foco em **marketing, geração de leads e apresentação de produtos**, utilizando boas práticas de **SEO, organização de conteúdo e integração com redes sociais**.
